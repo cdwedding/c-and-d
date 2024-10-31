@@ -19,7 +19,7 @@ html {
     background: #ffddb7; /* Set to black initially */
     color: #fff;
     width: 100%;
-    overflow-x: hidden;
+    overflow: hidden;
 }
 
 
@@ -237,7 +237,7 @@ p.location-detail{
         bottom: 0;
     }
     .hashtags{
-       bottom: 20px;
+       top: -20px;
     }
     .countdown-container{
         background-position: 47% 0;
