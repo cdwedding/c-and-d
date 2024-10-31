@@ -1,0 +1,377 @@
+/* Import Poppins font */
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Lato:wght@400;600&display=swap');
+
+/* Reset some basic styling */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Background setup */
+body,
+html {
+    height: 100%;
+    font-family: 'Lato', sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #ffddb7; /* Set to black initially */
+    color: #fff;
+    width: 100%;
+    overflow-x: hidden;
+}
+
+
+.countdown-container {
+    position: relative;
+    width: 100%;
+    max-width: 100vw;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    background-image: url('./cd-bg.JPG');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    text-align: center;
+    color: #ffffff;
+    overflow: hidden;
+    opacity: 0; /* Initially hidden */
+    transition: opacity 1s ease; /* Fade effect */
+}
+
+/* After loading */
+.countdown-container.loaded {
+    opacity: 1; /* Fade in effect */
+}
+
+/* Black overlay */
+.countdown-container::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.6);
+    /* Black with 0.5 opacity */
+    z-index: 1;
+}
+
+/* Ensure content is above overlay */
+.wedding-details,
+.countdown {
+    position: relative;
+    z-index: 2;
+    opacity: 0;
+}
+
+/* Wedding details styling */
+.wedding-details {
+    animation: fadeInDown 1s ease-out forwards;
+    margin-top: 60px;
+    padding: 0 30px;
+}
+
+.wedding-details h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.7rem;
+    margin-bottom: 10px;
+    color: #ffddb7;
+    animation-delay: 0.2s;
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7);
+    font-style: italic;
+}
+
+.wedding-details h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 4rem;
+    margin-bottom: 20px;
+    color: #ffffff;
+    animation-delay: 0.4s;
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7);
+}
+
+.wedding-details p {
+    font-size: 1.2rem;
+    margin: 10px 0;
+    color: #ffddb7;
+    animation-delay: 0.6s;
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7);
+}
+
+/* Countdown styling at the bottom */
+.countdown {
+    position: absolute;
+    bottom: 20px;
+    font-size: 2.5rem;
+    letter-spacing: 1px;
+    padding: 20px 40px;
+    background: rgba(0, 0, 0, 0.6);
+    border-radius: 10px;
+    animation: fadeInUp 1s ease-out 0.8s forwards;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7);
+    /* Shadow on countdown text */
+}
+
+.countdown:hover {
+    transform: scale(1.05);
+}
+
+.countdown .time {
+    display: inline-block;
+    margin: 0 15px;
+}
+
+.countdown .time span {
+    display: block;
+    font-size: 1.2rem;
+    color: #ffddb7;
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7);
+}
+
+/* Hashtags styling */
+.hashtags {
+    position: absolute;
+    bottom: 10px;
+    /* Adjust as necessary */
+    right: 20px;
+    /* Adjust as necessary */
+    color: #fff;
+    /* Color to match the theme */
+    font-size: 1rem;
+    /* Font size can be adjusted */
+    text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.7);
+    /* Subtle shadow for better visibility */
+    z-index: 2;
+    /* Ensures it appears above the overlay */
+    text-align: right;
+    /* Align text to the right */
+}
+
+/* Modal styles */
+.modal {
+    display: none;
+    /* Hidden by default */
+    position: fixed;
+    /* Stay in place */
+    z-index: 10;
+    /* Higher than other elements */
+    left: 0;
+    top: 0;
+    width: 100%;
+    /* Full width */
+    height: 100%;
+    /* Full height */
+    overflow: auto;
+    /* Enable scroll if needed */
+    background-color: rgba(0, 0, 0, 0.8);
+    /* Black with opacity */
+}
+
+.modal-content {
+    background-color: #fefefe;
+    margin: 10% auto;
+    /* Centering modal */
+    padding: 20px;
+    border: 1px solid #888;
+    width: 90%;
+    /* Could be more or less, depending on screen size */
+    max-width: 600px;
+    /* Max width for larger screens */
+    color: #333;
+    /* Text color */
+}
+.modal-content h2{
+    margin-bottom: 20px;
+}
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+span.location {
+    text-decoration: underline;
+    cursor: pointer;
+}
+.social-icons {
+    margin-top: 10px;
+}
+
+.social-icons a {
+    color: #fff; /* Icon color */
+    margin: 0 10px;
+    font-size: 1.5rem; /* Adjust size as needed */
+    text-decoration: none;
+}
+
+.social-icons a:hover {
+    color: #ffffff; /* Change color on hover */
+}
+
+
+p.location-detail{
+    margin-top: 20px;
+}
+
+
+/* Responsive adjustments for hashtags */
+@media (max-width: 1023px) {
+    .countdown, .hashtags{
+        position: relative;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+    }
+    .hashtags{
+       bottom: 20px;
+    }
+    .countdown-container{
+        background-position: 47% 0;
+    }
+}
+@media (max-width: 768px) {
+    .hashtags {
+        font-size: 1rem;
+        /* Smaller font for hashtags on smaller screens */
+    }
+}
+
+@media (max-width: 480px) {
+    .hashtags {
+        font-size: 0.9rem;
+        /* Further reduced font for very small screens */
+    }
+}
+
+
+/* Fade-in and slide-down animation for wedding-details */
+@keyframes fadeInDown {
+    from {
+        opacity: 0;
+        transform: translateY(-30px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Fade-in and slide-up animation for countdown */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Responsive adjustments */
+
+
+@media (max-width: 768px) {
+    .wedding-details h1 {
+        font-size: 2rem;
+        /* Smaller font for smaller screens */
+    }
+
+    .wedding-details h2 {
+        font-size: 2.5rem;
+        /* Smaller font for smaller screens */
+    }
+
+    .wedding-details p,
+    .countdown .time span {
+        font-size: 0.9rem;
+        /* Smaller font for smaller screens */
+    }
+
+    .countdown {
+        font-size: 1.8rem;
+        /* Smaller countdown for smaller screens */
+        padding: 10px 20px;
+        /* Reduced padding */
+    }
+}
+
+@media (max-width: 480px) {
+    .countdown {
+        font-size: 1.5rem;
+        /* Further reduced countdown for very small screens */
+        padding: 8px 15px;
+        /* Further reduced padding */
+    }
+
+    .wedding-details h1 {
+        font-size: 1.5rem;
+        /* Further reduced heading size */
+    }
+
+    .wedding-details h2 {
+        font-size: 2.5rem;
+        /* Further reduced subheading size */
+    }
+
+    .wedding-details p {
+        font-size: 1.2rem;
+        /* Further reduced paragraph size */
+    }
+}
+
+/* Pulse animation */
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.05);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+}
+
+/* Pulse animation */
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.05);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+}
+
+.bride-groom {
+    animation: pulse 3s infinite;
+    /* Ensure this line is included */
+    color: #ffddb7;
+    /* Ensure it matches your design */
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7);
+    /* Maintain text shadow for clarity */
+}
+
